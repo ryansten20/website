@@ -33,12 +33,12 @@ const projects: Project[] = [
     imageHeight: 180,
   },
   {
-    title: 'Task Management App',
+    title: 'This Website',
     description:
-      'A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-    technologies: ['React', 'Node.js', 'Socket.io', 'MongoDB'],
-    github: 'https://github.com',
-    demo: 'https://example.com',
+      'This website is a portfolio of my work and projects. Also, a place to practice API calls, React, and TypeScript.',
+    technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Resend API', 'Cursor AI', 'Vercel', 'GitHub'],
+    github: 'https://github.com/ryansten20/website',
+    demo: 'https://ryanstenersen.com',
     image: 'bg-gradient-to-br from-purple-400 to-pink-600',
   },
   {

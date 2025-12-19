@@ -47,21 +47,24 @@ export default function About() {
           >
             <h3 className="text-3xl font-bold mb-6">A Little About Myself</h3>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              I'm a passionate full-stack developer with a love for creating
-              innovative solutions and bringing ideas to life through code. With
-              expertise in modern web technologies, I specialize in building
-              responsive, performant applications that deliver exceptional user
-              experiences.
+              I'm a full time student at the University of Idaho studying Computer Science
+              with a passion for software development. I'm currently in my final year of study, graduating in May 2026,
+              and I'm looking for an internship before graduation.
             </p>
             <p className="text-gray-600 mb-4 leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies,
-              contributing to open-source projects, or sharing knowledge with the
-              developer community. I believe in continuous learning and staying
-              up-to-date with the latest industry trends.
+              Currently, I'm working on a project for my Senior Capstone Course, where we are using a DMX controller(stage lighting controller) to control a light show using an Arduino Uno
+              that wirelessly transmits to a receiver that controls the lights. This project is a collaboration with my partner. There are over 100 sets of glasses
+              that each have a receiver attached to them. The end goal is to use glasses connected to the receiver to see the light show in real time.
+              These glasses are used by the University of Idaho's marching band to put on halftime shows for around 11,000 people at home football games. 
+            </p>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              I'm trying to expand my knowledge in all areas of computer science, including software development, hardware development, cybersecurity, and artificial intelligence.
             </p>
             <p className="text-gray-600 leading-relaxed">
-              My goal is to work on challenging projects that push the boundaries
-              of what's possible and make a positive impact through technology.
+              I'm a quick learner and I'm always looking to learn new things and expand my knowledge. I started coding in high school during a Web Design course mostly
+              using HTML, CSS, and JavaScript. When I'm not focused on school or work, I am an avid Pokemon collector. I run an eBay store on the side selling
+              Pokemon cards. Eventually, I would like to find a bridge between computer science and Pokemon. I also enjoy playing games, watching UFC and NFL seeing new places,
+              and spending time with friends and family.
             </p>
           </motion.div>
 
