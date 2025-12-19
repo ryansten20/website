@@ -11,7 +11,8 @@ export default function Hero() {
   ]
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center section-padding bg-gradient-to-br from-primary-50 via-white to-primary-50">
+    <>
+      <section id="home" className="min-h-screen flex items-center justify-center section-padding bg-gradient-to-br from-primary-50 via-white to-primary-50">
       <div className="container-custom text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,6 +93,7 @@ export default function Hero() {
         </motion.div>
       </div>
     </section>
+    </>
   )
 }
 

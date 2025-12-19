@@ -31,13 +31,30 @@ export default function Contact() {
     email: '',
     message: '',
   })
+  const [isLoading, setIsLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async(e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I will get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
+    setIsLoading(true)
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST', //specify the HTTP method
+        headers: { 'Content-Type': 'application/json' }, //specify the content type
+        body: JSON.stringify(formData), //specify the body of the request
+      })
+
+      const data = await response.json()
+      if (!response.ok) { //check if the response is ok
+        throw new Error(data.message || 'Failed to send message')
+      }
+      alert('Thank you for your message! I will get back to you soon.') //show a success message
+      setFormData({ name: '', email: '', message: '' }) //reset the form data
+    } catch (error) {
+      console.error('Error sending message:', error) //log the error
+      alert('Failed to send message. Please try again.') //show an error message
+    } finally {
+      setIsLoading(false) //set the loading state to false
+    }
   }
 
   return (
@@ -122,7 +139,6 @@ export default function Contact() {
                 }
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-                placeholder="Ryan Stenersen"
               />
             </div>
             <div className="mb-6">
@@ -141,7 +157,6 @@ export default function Contact() {
                 }
                 required
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition"
-                placeholder="ryansten20@outlook.com"
               />
             </div>
             <div className="mb-6">
@@ -160,7 +175,6 @@ export default function Contact() {
                 required
                 rows={5}
                 className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition resize-none"
-                placeholder="I'd love to hear from you! Let's chat about your project or collaboration ideas."
               />
             </div>
             <motion.button
@@ -170,7 +184,7 @@ export default function Contact() {
               whileTap={{ scale: 0.98 }}
             >
               <Send size={20} className="mr-2" />
-              Send Message
+              {isLoading ? 'Sending...' : 'Send Message'}
             </motion.button>
           </motion.form>
         </div>

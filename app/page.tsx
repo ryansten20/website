@@ -4,10 +4,9 @@ import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 import Contact from '@/components/Contact'
 import Navigation from '@/components/Navigation'
-
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen">      
       <Navigation />
       <Hero />
       <About />
