@@ -1,64 +1,74 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send } from 'lucide-react'
-import { useState } from 'react'
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useState } from "react";
 
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email',
-    value: 'ryansten20@outlook.com',
-    href: 'mailto:ryansten20@outlook.com',
+    label: "Email",
+    value: "ryansten20@outlook.com",
+    href: "mailto:ryansten20@outlook.com",
   },
   {
     icon: Phone,
-    label: 'Phone',
-    value: '+1 (208) 497-9183',
-    href: 'tel:+12084979183',
+    label: "Phone",
+    value: "+1 (208) 497-9183",
+    href: "tel:+12084979183",
   },
   {
     icon: MapPin,
-    label: 'Location',
-    value: 'Coeur d\'Alene, Idaho',
-    href: '#',
+    label: "Location",
+    value: "Coeur d'Alene, Idaho",
+    href: "#",
   },
-]
+];
+
+type ContactInfo = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-  const [isLoading, setIsLoading] = useState(false)
+  const [formData, setFormData] = useState<ContactInfo>({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async(e: React.FormEvent) => {
-    e.preventDefault()
-    setIsLoading(true)
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST', //specify the HTTP method
-        headers: { 'Content-Type': 'application/json' }, //specify the content type
+      const response = await fetch("/api/contact", {
+        method: "POST", //specify the HTTP method
+        headers: { "Content-Type": "application/json" }, //specify the content type
         body: JSON.stringify(formData), //specify the body of the request
-      })
+      });
 
-      const data = await response.json()
-      if (!response.ok) { //check if the response is ok
-        throw new Error(data.message || 'Failed to send message')
+      const data = await response.json();
+      if (!response.ok) {
+        //check if the response is ok
+        throw new Error(data.message || "Failed to send message");
       }
-      alert('Thank you for your message! I will get back to you soon.') //show a success message
-      setFormData({ name: '', email: '', message: '' }) //reset the form data
+      alert("Thank you for your message! I will get back to you soon."); //show a success message
+      setFormData({ name: "", email: "", message: "" }); //reset the form data
     } catch (error) {
-      console.error('Error sending message:', error) //log the error
-      alert('Failed to send message. Please try again.') //show an error message
+      console.error("Error sending message:", error); //log the error
+      alert("Failed to send message. Please try again."); //show an error message
     } finally {
-      setIsLoading(false) //set the loading state to false
+      setIsLoading(false); //set the loading state to false
     }
-  }
+  };
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-primary-50 to-white">
+    <section
+      id="contact"
+      className="section-padding bg-gradient-to-br from-primary-50 to-white"
+    >
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -91,7 +101,7 @@ export default function Contact() {
             </p>
             <div className="space-y-6">
               {contactInfo.map((info, index) => {
-                const Icon = info.icon
+                const Icon = info.icon;
                 return (
                   <motion.a
                     key={info.label}
@@ -110,7 +120,7 @@ export default function Contact() {
                       <p className="text-gray-600">{info.value}</p>
                     </div>
                   </motion.a>
-                )
+                );
               })}
             </div>
           </motion.div>
@@ -184,12 +194,11 @@ export default function Contact() {
               whileTap={{ scale: 0.98 }}
             >
               <Send size={20} className="mr-2" />
-              {isLoading ? 'Sending...' : 'Send Message'}
+              {isLoading ? "Sending..." : "Send Message"}
             </motion.button>
           </motion.form>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
